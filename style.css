@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Young Serif', serif;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+header h1{
+    color: #B51A1A;
+    font-size: 64px;
+}
+
+main{
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main div{
+    width: 40%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+main div p{
+    font-size: 40px;
+}
+
+footer nav{
+    display: flex;
+    gap: 304px;
+    justify-content: center;
+    align-items: center;
+}
+
+footer div{
+    background-color: #B51A1A;
+    width: 412px;
+    height: 100px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+footer div a{
+    color: whitesmoke;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+footer div:hover{
+    transform: scale(1.24);
+    transition: calc(.2s);
+}
+
+.verde{
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+#kanyeButton{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#filosofoButton{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button{
+    font-size: 34px;
+    color: white;
+}
