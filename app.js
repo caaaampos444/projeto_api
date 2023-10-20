@@ -1,5 +1,7 @@
 'use strict'
 
+let contadorDeAcertos=0
+
 async function pegarFrasesYe(){
     const endPointYe='https://api.kanye.rest'
     const responseYe=await fetch(endPointYe)
@@ -27,25 +29,36 @@ function criarTagP(fraseYe, fraseFilosofos){
         tagP.textContent=`"${fraseFilosofos}"`
         tagP.dataset.resposta='Filósofos'
     }
-        holder.appendChild(tagP)
+    holder.appendChild(tagP)
 }
 
 function verificarResposta(botaoId, respostaCorreta) {
-    const botao = document.getElementById(botaoId)
+    const botao=document.getElementById(botaoId)
     botao.addEventListener('click', function () {
-        const holder = document.getElementById('holder')
-        const ultimaTagP = holder.lastChild
-        const respostaUsuario = botao.textContent
-        if (ultimaTagP.dataset.resposta === respostaCorreta){
-            botao.textContent = 'CORRETO!'
-            botao.classList.add('verde')
+        const holder=document.getElementById('holder')
+        const ultimaTagP=holder.lastChild
+        const respostaUsuario=botao.textContent
+        if (ultimaTagP.dataset.resposta==respostaCorreta){
+            botao.textContent='CORRETO!'
+            contadorDeAcertos++
         }
         else
             botao.textContent = 'INCORRETO!'
-        setTimeout(function () {
-            location.reload()
-        }, 1444)
+        document.getElementById('contadorDeAcertos').textContent=`Acertos: ${contadorDeAcertos}`
+        setTimeout(()=>{
+            gerarNovaFrase()
+        },1444)
     })
+}
+
+async function gerarNovaFrase(){
+    const holder=document.getElementById('holder')
+    holder.innerHTML=''
+    const frasesYe=await pegarFrasesYe()
+    const frasesFilosofos= await pegarFrasesFilosofos()
+    criarTagP(frasesYe,frasesFilosofos)
+    document.getElementById('kanyeButton').textContent='Kanye West'
+    document.getElementById('filosofoButton').textContent='Filósofo'
 }
 
 async function carregarFrases(){
